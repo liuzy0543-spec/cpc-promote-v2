@@ -10,6 +10,13 @@ tmp_test*.txt
 cache/
 exports/
 outputs
+!demo/backend/profiling_backend/outputs/
+demo/backend/profiling_backend/outputs/*
+!demo/backend/profiling_backend/outputs/cellprofiler/
+demo/backend/profiling_backend/outputs/cellprofiler/*
+!demo/backend/profiling_backend/outputs/cellprofiler/Image.csv
+!demo/backend/profiling_backend/outputs/cellprofiler/Cells.csv
+!demo/backend/profiling_backend/outputs/cellprofiler/Nuclei.csv
 dist/
 demo/tmp_illum/
 integrations/openclaw/autodl/state/
