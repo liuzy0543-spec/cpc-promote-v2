@@ -1,0 +1,35 @@
+{
+  "implementation": "cellpaint_pipeline.profile_summaries.deepprofiler",
+  "single_cell_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_collect\\deepprofiler_single_cell.parquet",
+  "well_aggregated_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_collect\\deepprofiler_well_aggregated.parquet",
+  "output_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_summary",
+  "cell_count": 4,
+  "well_count": 2,
+  "feature_count": 672,
+  "metadata_column_count": 5,
+  "metadata_columns": [
+    "Metadata_Plate",
+    "Metadata_Well",
+    "Metadata_DeepProfiler_Experiment",
+    "Metadata_DeepProfiler_CellCount",
+    "Metadata_DeepProfiler_FieldCount"
+  ],
+  "top_feature_count": 50,
+  "top_variable_feature_names": [
+    "Cells_DeepProfiler_0111",
+    "Cells_DeepProfiler_0307",
+    "Cells_DeepProfiler_0333",
+    "Cells_DeepProfiler_0287",
+    "Cells_DeepProfiler_0497",
+    "Cells_DeepProfiler_0565",
+    "Cells_DeepProfiler_0119",
+    "Cells_DeepProfiler_0208",
+    "Cells_DeepProfiler_0505",
+    "Cells_DeepProfiler_0259"
+  ],
+  "pca_explained_variance_ratio": [
+    1.0,
+    2.411086623915944e-32
+  ],
+  "pca_plot_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_summary\\pca_plot.png"
+}

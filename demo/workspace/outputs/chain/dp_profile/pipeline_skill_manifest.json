@@ -1,0 +1,62 @@
+{
+  "implementation": "cellpaint_pipeline.adapters.deepprofiler_project",
+  "generated_utc": "2026-10-05T13:13:12Z",
+  "skill": {
+    "key": "dp-run-deep-feature-model",
+    "description": "Run the DeepProfiler model against a prepared DeepProfiler project.",
+    "category": "deepprofiler",
+    "input_keys": [
+      "project_root",
+      "output_dir",
+      "experiment_name",
+      "config_filename",
+      "metadata_filename",
+      "gpu"
+    ],
+    "typical_outputs": [
+      "outputs/<experiment>/features/",
+      "deepprofiler_profile log"
+    ],
+    "implements_with": [
+      "cellpaint_pipeline.adapters.deepprofiler_project",
+      "DeepProfiler"
+    ],
+    "user_summary": "Use this skill when you want raw DeepProfiler feature files from a prepared project.",
+    "agent_summary": "Choose this skill when the request is to execute the deep feature model without collecting the tabular outputs yet.",
+    "composes_with": [
+      "dp-collect-deep-features"
+    ],
+    "status": "advanced",
+    "replaced_by": []
+  },
+  "output_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_profile",
+  "primary_outputs": {
+    "project_root": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project",
+    "feature_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\outputs\\cell_painting_cnn_demo\\features",
+    "checkpoint_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\outputs\\cell_painting_cnn_demo\\checkpoint",
+    "log_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\logs\\deepprofiler\\20261005T131247Z_deepprofiler_profile.log"
+  },
+  "details": {
+    "project_root": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project",
+    "manifest_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\project_manifest.json",
+    "config_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\inputs\\config\\profile_config.json",
+    "metadata_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\inputs\\metadata\\index.csv",
+    "experiment_name": "cell_painting_cnn_demo",
+    "feature_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\outputs\\cell_painting_cnn_demo\\features",
+    "checkpoint_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\outputs\\cell_painting_cnn_demo\\checkpoint",
+    "checkpoint_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\outputs\\cell_painting_cnn_demo\\checkpoint\\Cell_Painting_CNN_v1.hdf5",
+    "log_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\logs\\deepprofiler\\20261005T131247Z_deepprofiler_profile.log",
+    "command": [
+      "D:\\项目\\CellPainting-Claw\\.venv\\Scripts\\python.exe",
+      "-m",
+      "deepprofiler",
+      "--root=D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project",
+      "--config=profile_config.json",
+      "--metadata=index.csv",
+      "--exp=cell_painting_cnn_demo",
+      "profile"
+    ],
+    "returncode": 0
+  },
+  "ok": true
+}

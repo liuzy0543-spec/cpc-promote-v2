@@ -1,0 +1,27 @@
+{
+  "implementation": "cellpaint_pipeline.skills.run-segmentation-masks",
+  "load_data_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_segmentation_masks\\load_data_for_segmentation.csv",
+  "pipeline_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_segmentation_masks\\CPJUMP1_analysis_mask_export.cppipe",
+  "cellprofiler_output_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_segmentation_masks\\cellprofiler_masks",
+  "image_table_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_segmentation_masks\\cellprofiler_masks\\Image.csv",
+  "cells_table_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_segmentation_masks\\cellprofiler_masks\\Cells.csv",
+  "nuclei_table_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_segmentation_masks\\cellprofiler_masks\\Nuclei.csv",
+  "labels_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_segmentation_masks\\cellprofiler_masks\\labels",
+  "outlines_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_segmentation_masks\\cellprofiler_masks\\outlines",
+  "sample_previews_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_segmentation_masks\\sample_previews_png",
+  "sample_preview_count": 2,
+  "execution": {
+    "label": "segmentation_run-mask-export",
+    "command": [
+      "D:\\项目\\CellPainting-Claw\\.venv\\Scripts\\python.exe",
+      "D:\\项目\\crc github v1 demo\\demo\\backend\\segmentation_backend\\scripts\\03_run_mask_export.py",
+      "--config",
+      "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_segmentation_masks\\segmentation_workflow_config.json",
+      "--reuse-load-data",
+      "--reuse-pipeline"
+    ],
+    "cwd": "D:\\项目\\crc github v1 demo\\demo\\backend\\segmentation_backend",
+    "log_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\logs\\segmentation\\20261005T131314Z_segmentation_run-mask-export.log",
+    "returncode": 0
+  }
+}

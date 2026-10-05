@@ -1,0 +1,52 @@
+{
+  "implementation": "cellpaint_pipeline.adapters.deepprofiler",
+  "generated_utc": "2026-10-05T13:12:44Z",
+  "skill": {
+    "key": "dp-export-deep-feature-inputs",
+    "description": "Write the DeepProfiler field metadata and per-field nuclei location CSV files.",
+    "category": "deepprofiler",
+    "input_keys": [
+      "workflow_root",
+      "image_csv_path",
+      "nuclei_csv_path",
+      "load_data_csv_path",
+      "output_dir"
+    ],
+    "typical_outputs": [
+      "manifest.json",
+      "images/field_metadata.csv",
+      "locations/"
+    ],
+    "implements_with": [
+      "cellpaint_pipeline.adapters.deepprofiler"
+    ],
+    "user_summary": "Use this skill when you want the DeepProfiler export bundle without building the project yet.",
+    "agent_summary": "Choose this skill when the request is to stop at the DeepProfiler export stage.",
+    "composes_with": [
+      "dp-build-deep-feature-project"
+    ],
+    "status": "advanced",
+    "replaced_by": []
+  },
+  "output_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_export",
+  "primary_outputs": {
+    "export_root": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_export",
+    "export_manifest_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_export\\manifest.json",
+    "field_metadata_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_export\\images\\field_metadata.csv",
+    "locations_root": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_export\\locations"
+  },
+  "details": {
+    "export_root": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_export",
+    "manifest_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_export\\manifest.json",
+    "field_metadata_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_export\\images\\field_metadata.csv",
+    "locations_root": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_export\\locations",
+    "field_count": 2,
+    "location_file_count": 2,
+    "total_nuclei": 4,
+    "source_image_csv": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\seg_artifacts\\cellprofiler_masks\\Image.csv",
+    "source_nuclei_csv": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\seg_artifacts\\cellprofiler_masks\\Nuclei.csv",
+    "source_load_data_csv": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\seg_artifacts\\load_data_for_segmentation.csv",
+    "source_label": "workflow-local-mask-export"
+  },
+  "ok": true
+}

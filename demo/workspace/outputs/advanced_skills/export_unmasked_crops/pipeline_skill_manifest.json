@@ -1,0 +1,48 @@
+{
+  "implementation": "cellpaint_pipeline.segmentation_native",
+  "generated_utc": "2026-10-05T13:14:08Z",
+  "skill": {
+    "key": "export-unmasked-single-cell-crops",
+    "description": "Export unmasked single-cell image stacks and masks for each segmented cell.",
+    "category": "segmentation",
+    "input_keys": [
+      "workflow_root",
+      "output_dir",
+      "workers"
+    ],
+    "typical_outputs": [
+      "unmasked/image_stacks/",
+      "unmasked/cell_masks/",
+      "unmasked/nuclei_masks/",
+      "unmasked/single_cell_manifest.csv"
+    ],
+    "implements_with": [
+      "cellpaint_pipeline.segmentation_native"
+    ],
+    "user_summary": "Advanced direct-control skill for explicitly requesting unmasked crop export.",
+    "agent_summary": "Advanced direct-control skill for explicitly requesting unmasked crop export.",
+    "composes_with": [
+      "export-deepprofiler-inputs"
+    ],
+    "status": "advanced",
+    "replaced_by": []
+  },
+  "output_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\export_unmasked_crops",
+  "primary_outputs": {
+    "crops_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\export_unmasked_crops\\unmasked",
+    "image_stacks_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\export_unmasked_crops\\unmasked\\image_stacks",
+    "cell_masks_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\export_unmasked_crops\\unmasked\\cell_masks",
+    "nuclei_masks_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\export_unmasked_crops\\unmasked\\nuclei_masks",
+    "manifest_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\export_unmasked_crops\\unmasked\\single_cell_manifest.csv",
+    "source_config_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\export_unmasked_crops\\segmentation_source_config.json"
+  },
+  "details": {
+    "mode": "unmasked",
+    "crops_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\export_unmasked_crops\\unmasked",
+    "manifest_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\export_unmasked_crops\\unmasked\\single_cell_manifest.csv",
+    "crop_count": 4,
+    "worker_count": 2,
+    "background_masked": false
+  },
+  "ok": true
+}

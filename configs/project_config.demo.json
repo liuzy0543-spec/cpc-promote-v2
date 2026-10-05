@@ -32,7 +32,8 @@
     "label_smoothing": 0.0,
     "validation_batch_size": 4,
     "initialization": "random",
-    "checkpoint_url": "https://zenodo.org/records/7114558/files/Cell_Painting_CNN_v1.hdf5?download=1"
+    "checkpoint_url": "https://zenodo.org/records/7114558/files/Cell_Painting_CNN_v1.hdf5?download=1",
+    "checkpoint_source_path": ""
   },
   "data_access": {
     "gallery_bucket": "cellpainting-gallery",
