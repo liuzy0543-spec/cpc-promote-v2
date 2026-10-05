@@ -9,6 +9,10 @@ because the test-suite patches them here.
 from __future__ import annotations
 
 from cellpaint_pipeline.cli.app import COMMAND_HANDLERS, build_parser, main
+# Re-exported because it was importable from the single-module cli and
+# tests patch it here; anything resolving a config through the CLI
+# facade would otherwise break.
+from cellpaint_pipeline.config import ProjectConfig
 from cellpaint_pipeline.cli.helpers import (
     _normalize_extra_args,
     _resolve_deepprofiler_source_kwargs,
@@ -21,6 +25,7 @@ from cellpaint_pipeline.cli.lazy import *  # noqa: F401,F403
 from cellpaint_pipeline.cli.lazy import _LazyCallable, _lazy
 
 __all__ = [
+    'ProjectConfig',
     'available_cppipe_templates',
     'available_deepprofiler_modes',
     'available_mcp_tools',

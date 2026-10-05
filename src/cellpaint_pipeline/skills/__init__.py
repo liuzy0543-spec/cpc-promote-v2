@@ -60,6 +60,9 @@ _declare(_SKILLS + 'inputs',
          'skill_inputs_from_mapping', 'skill_inputs_to_mapping')
 _declare(_SKILLS + 'context', 'SkillRuntimeContext')
 _declare(_SKILLS + 'registry', 'SKILL_RUNNERS')
+# ExecutionResult is the value type run_pipeline_skill returns from the CLI
+# layer; it was reachable here before the split and is a real API, not a leak.
+_declare('cellpaint_pipeline.runner', 'ExecutionResult')
 _declare(_SKILLS + 'dispatch', 'run_pipeline_skill')
 _declare(_SKILLS + 'finalize',
          '_build_isolated_segmentation_skill_config', '_execution_result_to_dict',
@@ -111,6 +114,7 @@ __all__ = [
     'CURRENT_LEGACY_PIPELINE_SKILLS',
     'CURRENT_PRIMARY_PIPELINE_SKILLS',
     'DEPRECATED_SKILL_PARAMETERS',
+    'ExecutionResult',
     'LEGACY_PIPELINE_SKILLS',
     'PRIMARY_PIPELINE_SKILLS',
     'PipelineSkillDefinition',
