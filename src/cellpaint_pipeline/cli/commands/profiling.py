@@ -6,6 +6,7 @@ import argparse
 import json
 from pathlib import Path
 from cellpaint_pipeline.config import ProjectConfig
+from cellpaint_pipeline.cli.helpers import _impl
 
 from cellpaint_pipeline.cli.helpers import (
     _native_result_ok,
@@ -14,7 +15,6 @@ from cellpaint_pipeline.cli.helpers import (
 )
 
 
-from cellpaint_pipeline import cli as _cli
 
 def _cmd_run_profiling(args: argparse.Namespace) -> int:
             config = ProjectConfig.from_json(args.config)
@@ -85,19 +85,6 @@ def _cmd_run_evaluation(args: argparse.Namespace) -> int:
                 'run_manifest_path': str(native_result.run_manifest_path),
             }, indent=2, ensure_ascii=False))
             return 0
-
-def _impl(name: str):
-    """Resolve an implementation proxy through the package facade.
-
-    Going through the facade (rather than importing the proxy
-    directly) keeps ``@patch('cellpaint_pipeline.cli.<name>')``
-    effective, exactly as it was when every command lived in one
-    module.
-    """
-    return getattr(_cli, name)
-
-
-
 def register(subparsers: argparse._SubParsersAction) -> None:
     """Attach this domain's sub-commands, in their original order."""
     profiling_parser = subparsers.add_parser('run-profiling', help='Run a profiling step.')

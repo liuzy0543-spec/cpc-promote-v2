@@ -142,3 +142,17 @@ def _native_segmentation_result_to_dict(result: object) -> dict:
         'well_count': result.well_count,
         'site_count': result.site_count,
     }
+
+
+def _impl(name: str):
+    """Resolve an implementation proxy through the package facade.
+
+    Going through the facade (rather than importing the proxy directly) keeps
+    patch('cellpaint_pipeline.cli.<name>') effective, exactly as it was when
+    every command lived in one module.  The facade is looked up at call time
+    so this module can be imported while cellpaint_pipeline.cli is still
+    initialising.
+    """
+    from cellpaint_pipeline import cli as _cli
+
+    return getattr(_cli, name)

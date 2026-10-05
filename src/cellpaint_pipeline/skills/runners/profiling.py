@@ -14,22 +14,15 @@ from __future__ import annotations
 import json
 from typing import Any
 
-from cellpaint_pipeline import skills as _skills
 from cellpaint_pipeline.runner import ExecutionResult
 from cellpaint_pipeline.skills.context import SkillRuntimeContext
 from cellpaint_pipeline.skills.definitions import PipelineSkillResult
 from cellpaint_pipeline.skills.finalize import (
+    _native,
     _execution_result_to_dict,
     _finalize_skill_result,
     _json_ready,
 )
-
-
-def _native(name: str):
-    """Return the native implementation ``name`` from the package facade."""
-    return getattr(_skills, name)
-
-
 __all__ = [
     '_run_cellprofiler_profiling',
     '_run_cyto_aggregate_profiles',

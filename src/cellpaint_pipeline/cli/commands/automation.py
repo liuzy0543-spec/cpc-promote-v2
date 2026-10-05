@@ -6,9 +6,9 @@ import argparse
 import json
 from pathlib import Path
 from cellpaint_pipeline.config import ProjectConfig
+from cellpaint_pipeline.cli.helpers import _impl
 
 
-from cellpaint_pipeline import cli as _cli
 
 def _cmd_collect_validation_report(args: argparse.Namespace) -> int:
             config = ProjectConfig.from_json(args.config)
@@ -114,19 +114,6 @@ def _cmd_smoke_test(args: argparse.Namespace) -> int:
                 'validation_ok': result.validation_ok,
             }, indent=2, ensure_ascii=False))
             return 0 if result.ok else 1
-
-def _impl(name: str):
-    """Resolve an implementation proxy through the package facade.
-
-    Going through the facade (rather than importing the proxy
-    directly) keeps ``@patch('cellpaint_pipeline.cli.<name>')``
-    effective, exactly as it was when every command lived in one
-    module.
-    """
-    return getattr(_cli, name)
-
-
-
 def register(subparsers: argparse._SubParsersAction) -> None:
     """Attach this domain's sub-commands, in their original order."""
     validation_report_parser = subparsers.add_parser('collect-validation-report', help='Collect known validation artifacts into one report.')

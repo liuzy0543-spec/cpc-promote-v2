@@ -171,11 +171,24 @@ def build_primary_outputs(
             + ', '.join(sorted(undeclared))
         )
     projected: dict[str, Path | None] = {}
+    unproduced: list[str] = []
     for entry in entries:
         value = values.get(entry.key)
-        if value is not None and entry.optional and not Path(value).exists():
+        if value is None:
+            # The mirror of an undeclared key: a required entry the runner never
+            # produced.  Recording null would advertise an output that does not
+            # exist, which is the drift this contract exists to prevent.
+            if not entry.optional:
+                unproduced.append(entry.key)
+            projected[entry.key] = None
+            continue
+        if entry.optional and not Path(value).exists():
             value = None
         projected[entry.key] = value
+    if unproduced:
+        raise ValueError(
+            'required output(s) were not produced: ' + ', '.join(sorted(unproduced))
+        )
     return projected
 
 

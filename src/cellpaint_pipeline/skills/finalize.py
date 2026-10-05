@@ -104,3 +104,17 @@ def _json_ready(value: Any) -> Any:
     if isinstance(value, (list, tuple)):
         return [_json_ready(item) for item in value]
     return value
+
+
+def _native(name: str):
+    """Return the native implementation name from the package facade.
+
+    Runners call their native implementations through the facade rather than
+    importing them directly, so that patch('cellpaint_pipeline.skills.<name>')
+    keeps isolating a runner exactly as it did before the split.  The facade
+    is resolved at call time so this module stays importable while the
+    package itself is still initialising.
+    """
+    from cellpaint_pipeline import skills as _skills
+
+    return getattr(_skills, name)

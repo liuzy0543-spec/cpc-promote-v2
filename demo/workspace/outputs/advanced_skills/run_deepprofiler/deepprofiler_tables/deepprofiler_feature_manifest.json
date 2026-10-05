@@ -1,23 +1,46 @@
-{
-  "implementation": "cellpaint_pipeline.deepprofiler_feature_collection",
-  "project_root": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project",
-  "project_manifest_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\project_manifest.json",
-  "feature_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\outputs\\cell_painting_cnn_demo\\features",
-  "output_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables",
-  "experiment_name": "cell_painting_cnn_demo",
-  "single_cell_parquet_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_single_cell.parquet",
-  "single_cell_csv_gz_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_single_cell.csv.gz",
-  "well_aggregated_parquet_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_well_aggregated.parquet",
-  "well_aggregated_csv_gz_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_well_aggregated.csv.gz",
-  "field_summary_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_field_summary.csv",
-  "field_file_count": 2,
-  "cell_count": 4,
-  "feature_count": 672,
-  "metadata_column_count": 46,
-  "well_count": 2,
-  "notes": [
-    "Single-cell output is pycytominer-friendly: metadata columns are normalized to the Metadata_ prefix.",
-    "Feature columns are exported as Cells_DeepProfiler_####.",
-    "Well-level output is a mean aggregation over all DeepProfiler cells within each (plate, well)."
-  ]
-}
+{
+
+  "implementation": "cellpaint_pipeline.deepprofiler_feature_collection",
+
+  "project_root": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project",
+
+  "project_manifest_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\project_manifest.json",
+
+  "feature_dir": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\outputs\\cell_painting_cnn_demo\\features",
+
+  "output_dir": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables",
+
+  "experiment_name": "cell_painting_cnn_demo",
+
+  "single_cell_parquet_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_single_cell.parquet",
+
+  "single_cell_csv_gz_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_single_cell.csv.gz",
+
+  "well_aggregated_parquet_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_well_aggregated.parquet",
+
+  "well_aggregated_csv_gz_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_well_aggregated.csv.gz",
+
+  "field_summary_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_field_summary.csv",
+
+  "field_file_count": 2,
+
+  "cell_count": 4,
+
+  "feature_count": 672,
+
+  "metadata_column_count": 46,
+
+  "well_count": 2,
+
+  "notes": [
+
+    "Single-cell output is pycytominer-friendly: metadata columns are normalized to the Metadata_ prefix.",
+
+    "Feature columns are exported as Cells_DeepProfiler_####.",
+
+    "Well-level output is a mean aggregation over all DeepProfiler cells within each (plate, well)."
+
+  ]
+
+}
+

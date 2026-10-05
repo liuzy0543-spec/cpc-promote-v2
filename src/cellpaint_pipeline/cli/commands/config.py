@@ -5,9 +5,9 @@ from __future__ import annotations
 import argparse
 import json
 from cellpaint_pipeline.config import ProjectConfig
+from cellpaint_pipeline.cli.helpers import _impl
 
 
-from cellpaint_pipeline import cli as _cli
 
 def _cmd_show_config(args: argparse.Namespace) -> int:
             config = ProjectConfig.from_json(args.config)
@@ -92,19 +92,6 @@ def _cmd_summarize_data_access(args: argparse.Namespace) -> int:
             )
             print(json.dumps(_impl("data_access_summary_to_dict")(result), indent=2, ensure_ascii=False))
             return 0 if result.ok else 1
-
-def _impl(name: str):
-    """Resolve an implementation proxy through the package facade.
-
-    Going through the facade (rather than importing the proxy
-    directly) keeps ``@patch('cellpaint_pipeline.cli.<name>')``
-    effective, exactly as it was when every command lived in one
-    module.
-    """
-    return getattr(_cli, name)
-
-
-
 def register(subparsers: argparse._SubParsersAction) -> None:
     """Attach this domain's sub-commands, in their original order."""
     show_parser = subparsers.add_parser('show-config', help='Print the resolved project config.')

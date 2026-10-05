@@ -4,15 +4,9 @@ from __future__ import annotations
 
 from typing import Any
 
-from cellpaint_pipeline import skills as _skills
-
-
-def _native(name: str):
-    """Return the native implementation ``name`` from the package facade."""
-    return getattr(_skills, name)
 from cellpaint_pipeline.skills.context import SkillRuntimeContext
 from cellpaint_pipeline.skills.definitions import PipelineSkillResult
-from cellpaint_pipeline.skills.finalize import _finalize_skill_result, _json_ready
+from cellpaint_pipeline.skills.finalize import _native, _finalize_skill_result, _json_ready
 from cellpaint_pipeline.skills.outputs import (
     DEEPPROFILER_COLLECT_OUTPUTS,
     build_primary_outputs,

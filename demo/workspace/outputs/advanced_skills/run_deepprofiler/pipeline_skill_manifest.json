@@ -1,92 +1,184 @@
-{
-  "implementation": "cellpaint_pipeline.adapters.deepprofiler_features",
-  "generated_utc": "2026-10-05T13:14:19Z",
-  "skill": {
-    "key": "run-deepprofiler",
-    "description": "Run the DeepProfiler path and return collected single-cell and well-level feature tables.",
-    "category": "deepprofiler",
-    "input_keys": [
-      "project_root",
-      "workflow_root",
-      "image_csv_path",
-      "nuclei_csv_path",
-      "load_data_csv_path",
-      "output_dir",
-      "experiment_name",
-      "config_filename",
-      "metadata_filename",
-      "gpu"
-    ],
-    "typical_outputs": [
-      "deepprofiler_single_cell.parquet",
-      "deepprofiler_well_aggregated.parquet",
-      "deepprofiler_feature_manifest.json"
-    ],
-    "implements_with": [
-      "cellpaint_pipeline.deepprofiler_pipeline",
-      "DeepProfiler",
-      "pandas",
-      "pyarrow"
-    ],
-    "user_summary": "Use this skill when you want final DeepProfiler tables rather than only intermediate project or feature directories.",
-    "agent_summary": "Choose this skill when the request is to run DeepProfiler and hand back analysis-ready outputs.",
-    "composes_with": [
-      "summarize-deepprofiler-profiles"
-    ],
-    "status": "advanced",
-    "replaced_by": []
-  },
-  "output_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler",
-  "primary_outputs": {
-    "project_root": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project",
-    "feature_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\outputs\\cell_painting_cnn_demo\\features",
-    "single_cell_parquet_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_single_cell.parquet",
-    "single_cell_csv_gz_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_single_cell.csv.gz",
-    "well_aggregated_parquet_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_well_aggregated.parquet",
-    "well_aggregated_csv_gz_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_well_aggregated.csv.gz",
-    "feature_manifest_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_feature_manifest.json",
-    "log_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\logs\\deepprofiler\\20261005T131412Z_deepprofiler_profile.log"
-  },
-  "details": {
-    "profile": {
-      "project_root": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project",
-      "manifest_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\project_manifest.json",
-      "config_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\inputs\\config\\profile_config.json",
-      "metadata_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\inputs\\metadata\\index.csv",
-      "experiment_name": "cell_painting_cnn_demo",
-      "feature_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\outputs\\cell_painting_cnn_demo\\features",
-      "checkpoint_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\outputs\\cell_painting_cnn_demo\\checkpoint",
-      "checkpoint_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\outputs\\cell_painting_cnn_demo\\checkpoint\\Cell_Painting_CNN_v1.hdf5",
-      "log_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\logs\\deepprofiler\\20261005T131412Z_deepprofiler_profile.log",
-      "command": [
-        "D:\\项目\\CellPainting-Claw\\.venv\\Scripts\\python.exe",
-        "-m",
-        "deepprofiler",
-        "--root=D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project",
-        "--config=profile_config.json",
-        "--metadata=index.csv",
-        "--exp=cell_painting_cnn_demo",
-        "profile"
-      ],
-      "returncode": 0
-    },
-    "collection": {
-      "project_root": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project",
-      "feature_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\outputs\\cell_painting_cnn_demo\\features",
-      "output_dir": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables",
-      "manifest_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_feature_manifest.json",
-      "single_cell_parquet_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_single_cell.parquet",
-      "single_cell_csv_gz_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_single_cell.csv.gz",
-      "well_aggregated_parquet_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_well_aggregated.parquet",
-      "well_aggregated_csv_gz_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_well_aggregated.csv.gz",
-      "field_summary_path": "D:\\项目\\crc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_field_summary.csv",
-      "experiment_name": "cell_painting_cnn_demo",
-      "field_file_count": 2,
-      "cell_count": 4,
-      "feature_count": 672,
-      "metadata_column_count": 46,
-      "well_count": 2
-    }
-  },
-  "ok": true
-}
+{
+
+  "implementation": "cellpaint_pipeline.adapters.deepprofiler_features",
+
+  "generated_utc": "2026-10-05T13:14:19Z",
+
+  "skill": {
+
+    "key": "run-deepprofiler",
+
+    "description": "Run the DeepProfiler path and return collected single-cell and well-level feature tables.",
+
+    "category": "deepprofiler",
+
+    "input_keys": [
+
+      "project_root",
+
+      "workflow_root",
+
+      "image_csv_path",
+
+      "nuclei_csv_path",
+
+      "load_data_csv_path",
+
+      "output_dir",
+
+      "experiment_name",
+
+      "config_filename",
+
+      "metadata_filename",
+
+      "gpu"
+
+    ],
+
+    "typical_outputs": [
+
+      "deepprofiler_single_cell.parquet",
+
+      "deepprofiler_well_aggregated.parquet",
+
+      "deepprofiler_feature_manifest.json"
+
+    ],
+
+    "implements_with": [
+
+      "cellpaint_pipeline.deepprofiler_pipeline",
+
+      "DeepProfiler",
+
+      "pandas",
+
+      "pyarrow"
+
+    ],
+
+    "user_summary": "Use this skill when you want final DeepProfiler tables rather than only intermediate project or feature directories.",
+
+    "agent_summary": "Choose this skill when the request is to run DeepProfiler and hand back analysis-ready outputs.",
+
+    "composes_with": [
+
+      "summarize-deepprofiler-profiles"
+
+    ],
+
+    "status": "advanced",
+
+    "replaced_by": []
+
+  },
+
+  "output_dir": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler",
+
+  "primary_outputs": {
+
+    "project_root": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project",
+
+    "feature_dir": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\outputs\\cell_painting_cnn_demo\\features",
+
+    "single_cell_parquet_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_single_cell.parquet",
+
+    "single_cell_csv_gz_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_single_cell.csv.gz",
+
+    "well_aggregated_parquet_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_well_aggregated.parquet",
+
+    "well_aggregated_csv_gz_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_well_aggregated.csv.gz",
+
+    "feature_manifest_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_feature_manifest.json",
+
+    "log_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\logs\\deepprofiler\\20261005T131412Z_deepprofiler_profile.log"
+
+  },
+
+  "details": {
+
+    "profile": {
+
+      "project_root": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project",
+
+      "manifest_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\project_manifest.json",
+
+      "config_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\inputs\\config\\profile_config.json",
+
+      "metadata_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\inputs\\metadata\\index.csv",
+
+      "experiment_name": "cell_painting_cnn_demo",
+
+      "feature_dir": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\outputs\\cell_painting_cnn_demo\\features",
+
+      "checkpoint_dir": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\outputs\\cell_painting_cnn_demo\\checkpoint",
+
+      "checkpoint_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\outputs\\cell_painting_cnn_demo\\checkpoint\\Cell_Painting_CNN_v1.hdf5",
+
+      "log_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\logs\\deepprofiler\\20261005T131412Z_deepprofiler_profile.log",
+
+      "command": [
+
+        "D:\\项目\\CellPainting-Claw\\.venv\\Scripts\\python.exe",
+
+        "-m",
+
+        "deepprofiler",
+
+        "--root=D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project",
+
+        "--config=profile_config.json",
+
+        "--metadata=index.csv",
+
+        "--exp=cell_painting_cnn_demo",
+
+        "profile"
+
+      ],
+
+      "returncode": 0
+
+    },
+
+    "collection": {
+
+      "project_root": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project",
+
+      "feature_dir": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\chain\\dp_project\\outputs\\cell_painting_cnn_demo\\features",
+
+      "output_dir": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables",
+
+      "manifest_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_feature_manifest.json",
+
+      "single_cell_parquet_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_single_cell.parquet",
+
+      "single_cell_csv_gz_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_single_cell.csv.gz",
+
+      "well_aggregated_parquet_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_well_aggregated.parquet",
+
+      "well_aggregated_csv_gz_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_well_aggregated.csv.gz",
+
+      "field_summary_path": "D:\\项目\\cpc github v1 demo\\demo\\workspace\\outputs\\advanced_skills\\run_deepprofiler\\deepprofiler_tables\\deepprofiler_field_summary.csv",
+
+      "experiment_name": "cell_painting_cnn_demo",
+
+      "field_file_count": 2,
+
+      "cell_count": 4,
+
+      "feature_count": 672,
+
+      "metadata_column_count": 46,
+
+      "well_count": 2
+
+    }
+
+  },
+
+  "ok": true
+
+}
+

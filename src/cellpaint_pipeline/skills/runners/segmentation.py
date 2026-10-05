@@ -5,16 +5,11 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from cellpaint_pipeline import skills as _skills
 from cellpaint_pipeline.runner import ExecutionResult
-
-
-def _native(name: str):
-    """Return the native implementation ``name`` from the package facade."""
-    return getattr(_skills, name)
 from cellpaint_pipeline.skills.context import SkillRuntimeContext
 from cellpaint_pipeline.skills.definitions import PipelineSkillResult
 from cellpaint_pipeline.skills.finalize import (
+    _native,
     _build_isolated_segmentation_skill_config,
     _execution_result_to_dict,
     _finalize_skill_result,

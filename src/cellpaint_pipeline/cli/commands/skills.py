@@ -6,9 +6,9 @@ import argparse
 import json
 from pathlib import Path
 from cellpaint_pipeline.config import ProjectConfig
+from cellpaint_pipeline.cli.helpers import _impl
 
 
-from cellpaint_pipeline import cli as _cli
 
 def _cmd_list_pipeline_skills(args: argparse.Namespace) -> int:
             payload = [
@@ -96,19 +96,6 @@ def _cmd_summarize_segmentation(args: argparse.Namespace) -> int:
                 payload['summary_path'] = str(output_path)
             print(json.dumps(payload, indent=2, ensure_ascii=False))
             return 0 if summary.ok else 1
-
-def _impl(name: str):
-    """Resolve an implementation proxy through the package facade.
-
-    Going through the facade (rather than importing the proxy
-    directly) keeps ``@patch('cellpaint_pipeline.cli.<name>')``
-    effective, exactly as it was when every command lived in one
-    module.
-    """
-    return getattr(_cli, name)
-
-
-
 def register(subparsers: argparse._SubParsersAction) -> None:
     """Attach this domain's sub-commands, in their original order."""
     list_skills_parser = subparsers.add_parser('list-pipeline-skills', help='List the available task-oriented pipeline skills.')

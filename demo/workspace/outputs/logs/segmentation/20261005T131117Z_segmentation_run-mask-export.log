@@ -1,75 +1,150 @@
-Picked up JAVA_TOOL_OPTIONS: -Xbootclasspath/a:C:\cp-cf\javabridge\jars\rhino-1.7R4.jar
-Times reported are CPU and Wall-clock times for each module
-Mon Oct  5 21:11:20 2026: Image # 1, module LoadData # 1: CPU_time = 0.66 secs, Wall_time = 0.79 secs
-Mon Oct  5 21:11:20 2026: Image # 1, module CorrectIlluminationApply # 2: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:20 2026: Image # 1, module ImageMath # 3: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:20 2026: Image # 1, module ImageMath # 4: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:20 2026: Image # 1, module ImageMath # 5: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:20 2026: Image # 1, module ImageMath # 6: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:20 2026: Image # 1, module ImageMath # 7: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:21 2026: Image # 1, module ImageMath # 8: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:21 2026: Image # 1, module ImageMath # 9: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:21 2026: Image # 1, module ImageMath # 10: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:21 2026: Image # 1, module CorrectIlluminationCalculate # 14: CPU_time = 0.03 secs, Wall_time = 0.02 secs
-Mon Oct  5 21:11:21 2026: Image # 1, module CorrectIlluminationApply # 15: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:21 2026: Image # 1, module IdentifyPrimaryObjects # 16: CPU_time = 0.19 secs, Wall_time = 0.20 secs
-Mon Oct  5 21:11:21 2026: Image # 1, module IdentifySecondaryObjects # 17: CPU_time = 0.09 secs, Wall_time = 0.10 secs
-Mon Oct  5 21:11:21 2026: Image # 1, module IdentifyTertiaryObjects # 18: CPU_time = 0.06 secs, Wall_time = 0.06 secs
-Mon Oct  5 21:11:21 2026: Image # 1, module MeasureColocalization # 19: CPU_time = 2.56 secs, Wall_time = 2.86 secs
-Mon Oct  5 21:11:24 2026: Image # 1, module MeasureGranularity # 20: CPU_time = 0.55 secs, Wall_time = 0.55 secs
-Mon Oct  5 21:11:24 2026: Image # 1, module MeasureObjectIntensity # 21: CPU_time = 0.47 secs, Wall_time = 0.49 secs
-Mon Oct  5 21:11:25 2026: Image # 1, module MeasureObjectNeighbors # 22: CPU_time = 0.00 secs, Wall_time = 0.01 secs
-Mon Oct  5 21:11:25 2026: Image # 1, module MeasureObjectNeighbors # 23: CPU_time = 0.00 secs, Wall_time = 0.01 secs
-Mon Oct  5 21:11:25 2026: Image # 1, module MeasureObjectNeighbors # 24: CPU_time = 0.02 secs, Wall_time = 0.01 secs
-Mon Oct  5 21:11:25 2026: Image # 1, module MeasureObjectIntensityDistribution # 25: CPU_time = 0.34 secs, Wall_time = 0.35 secs
-Mon Oct  5 21:11:25 2026: Image # 1, module MeasureObjectSizeShape # 26: CPU_time = 0.16 secs, Wall_time = 0.18 secs
-Mon Oct  5 21:11:25 2026: Image # 1, module MeasureTexture # 27: CPU_time = 18.34 secs, Wall_time = 19.66 secs
-Mon Oct  5 21:11:45 2026: Image # 1, module OverlayOutlines # 28: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:45 2026: Image # 1, module OverlayOutlines # 29: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:45 2026: Image # 1, module SaveImages # 30: CPU_time = 0.11 secs, Wall_time = 0.15 secs
-Mon Oct  5 21:11:45 2026: Image # 1, module SaveImages # 31: CPU_time = 0.03 secs, Wall_time = 0.03 secs
-Mon Oct  5 21:11:45 2026: Image # 1, module ConvertObjectsToImage # 32: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:45 2026: Image # 1, module ConvertObjectsToImage # 33: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-skimage\util\dtype.py:482: UserWarning: Downcasting int32 to uint16 without scaling because max value 2 fits in uint16
-cellprofiler\modules\saveimages.py:791: UserWarning: D:\项目\crc github v1 demo\demo\workspace\outputs\chain\seg_artifacts\cellprofiler_masks\labels\BR00000001_A01_s1--nuclei_labels.tiff is a low contrast image
-Mon Oct  5 21:11:45 2026: Image # 1, module SaveImages # 34: CPU_time = 0.03 secs, Wall_time = 0.03 secs
-cellprofiler\modules\saveimages.py:791: UserWarning: D:\项目\crc github v1 demo\demo\workspace\outputs\chain\seg_artifacts\cellprofiler_masks\labels\BR00000001_A01_s1--cell_labels.tiff is a low contrast image
-Mon Oct  5 21:11:45 2026: Image # 1, module SaveImages # 35: CPU_time = 0.03 secs, Wall_time = 0.03 secs
-Mon Oct  5 21:11:45 2026: Image # 1, module ExportToSpreadsheet # 36: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:45 2026: Image # 2, module LoadData # 1: CPU_time = 1.16 secs, Wall_time = 1.11 secs
-Mon Oct  5 21:11:46 2026: Image # 2, module CorrectIlluminationApply # 2: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:46 2026: Image # 2, module ImageMath # 3: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:46 2026: Image # 2, module ImageMath # 4: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:46 2026: Image # 2, module ImageMath # 5: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:46 2026: Image # 2, module ImageMath # 6: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:46 2026: Image # 2, module ImageMath # 7: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:46 2026: Image # 2, module ImageMath # 8: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:46 2026: Image # 2, module ImageMath # 9: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:46 2026: Image # 2, module ImageMath # 10: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:46 2026: Image # 2, module CorrectIlluminationCalculate # 14: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:46 2026: Image # 2, module CorrectIlluminationApply # 15: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:11:47 2026: Image # 2, module IdentifyPrimaryObjects # 16: CPU_time = 0.03 secs, Wall_time = 0.03 secs
-Mon Oct  5 21:11:47 2026: Image # 2, module IdentifySecondaryObjects # 17: CPU_time = 0.05 secs, Wall_time = 0.06 secs
-Mon Oct  5 21:11:47 2026: Image # 2, module IdentifyTertiaryObjects # 18: CPU_time = 0.06 secs, Wall_time = 0.05 secs
-Mon Oct  5 21:11:47 2026: Image # 2, module MeasureColocalization # 19: CPU_time = 3.36 secs, Wall_time = 3.60 secs
-Mon Oct  5 21:11:50 2026: Image # 2, module MeasureGranularity # 20: CPU_time = 2.53 secs, Wall_time = 2.73 secs
-Mon Oct  5 21:11:53 2026: Image # 2, module MeasureObjectIntensity # 21: CPU_time = 2.44 secs, Wall_time = 2.49 secs
-Mon Oct  5 21:11:55 2026: Image # 2, module MeasureObjectNeighbors # 22: CPU_time = 0.05 secs, Wall_time = 0.05 secs
-Mon Oct  5 21:11:56 2026: Image # 2, module MeasureObjectNeighbors # 23: CPU_time = 0.03 secs, Wall_time = 0.04 secs
-Mon Oct  5 21:11:56 2026: Image # 2, module MeasureObjectNeighbors # 24: CPU_time = 0.05 secs, Wall_time = 0.04 secs
-Mon Oct  5 21:11:56 2026: Image # 2, module MeasureObjectIntensityDistribution # 25: CPU_time = 1.52 secs, Wall_time = 1.68 secs
-Mon Oct  5 21:11:57 2026: Image # 2, module MeasureObjectSizeShape # 26: CPU_time = 0.86 secs, Wall_time = 0.92 secs
-Mon Oct  5 21:11:58 2026: Image # 2, module MeasureTexture # 27: CPU_time = 21.72 secs, Wall_time = 23.49 secs
-Mon Oct  5 21:12:22 2026: Image # 2, module OverlayOutlines # 28: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:12:22 2026: Image # 2, module OverlayOutlines # 29: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:12:22 2026: Image # 2, module SaveImages # 30: CPU_time = 0.02 secs, Wall_time = 0.04 secs
-Mon Oct  5 21:12:22 2026: Image # 2, module SaveImages # 31: CPU_time = 0.03 secs, Wall_time = 0.03 secs
-Mon Oct  5 21:12:22 2026: Image # 2, module ConvertObjectsToImage # 32: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Mon Oct  5 21:12:22 2026: Image # 2, module ConvertObjectsToImage # 33: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-cellprofiler\modules\saveimages.py:791: UserWarning: D:\项目\crc github v1 demo\demo\workspace\outputs\chain\seg_artifacts\cellprofiler_masks\labels\BR00000001_A02_s1--nuclei_labels.tiff is a low contrast image
-Mon Oct  5 21:12:22 2026: Image # 2, module SaveImages # 34: CPU_time = 0.02 secs, Wall_time = 0.04 secs
-cellprofiler\modules\saveimages.py:791: UserWarning: D:\项目\crc github v1 demo\demo\workspace\outputs\chain\seg_artifacts\cellprofiler_masks\labels\BR00000001_A02_s1--cell_labels.tiff is a low contrast image
-Mon Oct  5 21:12:22 2026: Image # 2, module SaveImages # 35: CPU_time = 0.03 secs, Wall_time = 0.04 secs
-Mon Oct  5 21:12:22 2026: Image # 2, module ExportToSpreadsheet # 36: CPU_time = 0.00 secs, Wall_time = 0.00 secs
-Starting CellProfiler 4.2.7
-[segmentation_demo] running: D:\项目\CellPainting-Claw\.venv\Scripts\cellprofiler.cmd -c -r -p D:\项目\crc github v1 demo\demo\workspace\outputs\chain\seg_artifacts\CPJUMP1_analysis_mask_export.cppipe -o D:\项目\crc github v1 demo\demo\workspace\outputs\chain\seg_artifacts\cellprofiler_masks -i D:\项目\crc github v1 demo --data-file D:\项目\crc github v1 demo\demo\workspace\outputs\chain\seg_artifacts\cellprofiler_masks\load_data_for_segmentation.absolute.csv
+Picked up JAVA_TOOL_OPTIONS: -Xbootclasspath/a:C:\cp-cf\javabridge\jars\rhino-1.7R4.jar
+
+Times reported are CPU and Wall-clock times for each module
+
+Mon Oct  5 21:11:20 2026: Image # 1, module LoadData # 1: CPU_time = 0.66 secs, Wall_time = 0.79 secs
+
+Mon Oct  5 21:11:20 2026: Image # 1, module CorrectIlluminationApply # 2: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:20 2026: Image # 1, module ImageMath # 3: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:20 2026: Image # 1, module ImageMath # 4: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:20 2026: Image # 1, module ImageMath # 5: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:20 2026: Image # 1, module ImageMath # 6: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:20 2026: Image # 1, module ImageMath # 7: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:21 2026: Image # 1, module ImageMath # 8: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:21 2026: Image # 1, module ImageMath # 9: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:21 2026: Image # 1, module ImageMath # 10: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:21 2026: Image # 1, module CorrectIlluminationCalculate # 14: CPU_time = 0.03 secs, Wall_time = 0.02 secs
+
+Mon Oct  5 21:11:21 2026: Image # 1, module CorrectIlluminationApply # 15: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:21 2026: Image # 1, module IdentifyPrimaryObjects # 16: CPU_time = 0.19 secs, Wall_time = 0.20 secs
+
+Mon Oct  5 21:11:21 2026: Image # 1, module IdentifySecondaryObjects # 17: CPU_time = 0.09 secs, Wall_time = 0.10 secs
+
+Mon Oct  5 21:11:21 2026: Image # 1, module IdentifyTertiaryObjects # 18: CPU_time = 0.06 secs, Wall_time = 0.06 secs
+
+Mon Oct  5 21:11:21 2026: Image # 1, module MeasureColocalization # 19: CPU_time = 2.56 secs, Wall_time = 2.86 secs
+
+Mon Oct  5 21:11:24 2026: Image # 1, module MeasureGranularity # 20: CPU_time = 0.55 secs, Wall_time = 0.55 secs
+
+Mon Oct  5 21:11:24 2026: Image # 1, module MeasureObjectIntensity # 21: CPU_time = 0.47 secs, Wall_time = 0.49 secs
+
+Mon Oct  5 21:11:25 2026: Image # 1, module MeasureObjectNeighbors # 22: CPU_time = 0.00 secs, Wall_time = 0.01 secs
+
+Mon Oct  5 21:11:25 2026: Image # 1, module MeasureObjectNeighbors # 23: CPU_time = 0.00 secs, Wall_time = 0.01 secs
+
+Mon Oct  5 21:11:25 2026: Image # 1, module MeasureObjectNeighbors # 24: CPU_time = 0.02 secs, Wall_time = 0.01 secs
+
+Mon Oct  5 21:11:25 2026: Image # 1, module MeasureObjectIntensityDistribution # 25: CPU_time = 0.34 secs, Wall_time = 0.35 secs
+
+Mon Oct  5 21:11:25 2026: Image # 1, module MeasureObjectSizeShape # 26: CPU_time = 0.16 secs, Wall_time = 0.18 secs
+
+Mon Oct  5 21:11:25 2026: Image # 1, module MeasureTexture # 27: CPU_time = 18.34 secs, Wall_time = 19.66 secs
+
+Mon Oct  5 21:11:45 2026: Image # 1, module OverlayOutlines # 28: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:45 2026: Image # 1, module OverlayOutlines # 29: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:45 2026: Image # 1, module SaveImages # 30: CPU_time = 0.11 secs, Wall_time = 0.15 secs
+
+Mon Oct  5 21:11:45 2026: Image # 1, module SaveImages # 31: CPU_time = 0.03 secs, Wall_time = 0.03 secs
+
+Mon Oct  5 21:11:45 2026: Image # 1, module ConvertObjectsToImage # 32: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:45 2026: Image # 1, module ConvertObjectsToImage # 33: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+skimage\util\dtype.py:482: UserWarning: Downcasting int32 to uint16 without scaling because max value 2 fits in uint16
+
+cellprofiler\modules\saveimages.py:791: UserWarning: D:\项目\cpc github v1 demo\demo\workspace\outputs\chain\seg_artifacts\cellprofiler_masks\labels\BR00000001_A01_s1--nuclei_labels.tiff is a low contrast image
+
+Mon Oct  5 21:11:45 2026: Image # 1, module SaveImages # 34: CPU_time = 0.03 secs, Wall_time = 0.03 secs
+
+cellprofiler\modules\saveimages.py:791: UserWarning: D:\项目\cpc github v1 demo\demo\workspace\outputs\chain\seg_artifacts\cellprofiler_masks\labels\BR00000001_A01_s1--cell_labels.tiff is a low contrast image
+
+Mon Oct  5 21:11:45 2026: Image # 1, module SaveImages # 35: CPU_time = 0.03 secs, Wall_time = 0.03 secs
+
+Mon Oct  5 21:11:45 2026: Image # 1, module ExportToSpreadsheet # 36: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:45 2026: Image # 2, module LoadData # 1: CPU_time = 1.16 secs, Wall_time = 1.11 secs
+
+Mon Oct  5 21:11:46 2026: Image # 2, module CorrectIlluminationApply # 2: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:46 2026: Image # 2, module ImageMath # 3: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:46 2026: Image # 2, module ImageMath # 4: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:46 2026: Image # 2, module ImageMath # 5: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:46 2026: Image # 2, module ImageMath # 6: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:46 2026: Image # 2, module ImageMath # 7: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:46 2026: Image # 2, module ImageMath # 8: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:46 2026: Image # 2, module ImageMath # 9: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:46 2026: Image # 2, module ImageMath # 10: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:46 2026: Image # 2, module CorrectIlluminationCalculate # 14: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:46 2026: Image # 2, module CorrectIlluminationApply # 15: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:11:47 2026: Image # 2, module IdentifyPrimaryObjects # 16: CPU_time = 0.03 secs, Wall_time = 0.03 secs
+
+Mon Oct  5 21:11:47 2026: Image # 2, module IdentifySecondaryObjects # 17: CPU_time = 0.05 secs, Wall_time = 0.06 secs
+
+Mon Oct  5 21:11:47 2026: Image # 2, module IdentifyTertiaryObjects # 18: CPU_time = 0.06 secs, Wall_time = 0.05 secs
+
+Mon Oct  5 21:11:47 2026: Image # 2, module MeasureColocalization # 19: CPU_time = 3.36 secs, Wall_time = 3.60 secs
+
+Mon Oct  5 21:11:50 2026: Image # 2, module MeasureGranularity # 20: CPU_time = 2.53 secs, Wall_time = 2.73 secs
+
+Mon Oct  5 21:11:53 2026: Image # 2, module MeasureObjectIntensity # 21: CPU_time = 2.44 secs, Wall_time = 2.49 secs
+
+Mon Oct  5 21:11:55 2026: Image # 2, module MeasureObjectNeighbors # 22: CPU_time = 0.05 secs, Wall_time = 0.05 secs
+
+Mon Oct  5 21:11:56 2026: Image # 2, module MeasureObjectNeighbors # 23: CPU_time = 0.03 secs, Wall_time = 0.04 secs
+
+Mon Oct  5 21:11:56 2026: Image # 2, module MeasureObjectNeighbors # 24: CPU_time = 0.05 secs, Wall_time = 0.04 secs
+
+Mon Oct  5 21:11:56 2026: Image # 2, module MeasureObjectIntensityDistribution # 25: CPU_time = 1.52 secs, Wall_time = 1.68 secs
+
+Mon Oct  5 21:11:57 2026: Image # 2, module MeasureObjectSizeShape # 26: CPU_time = 0.86 secs, Wall_time = 0.92 secs
+
+Mon Oct  5 21:11:58 2026: Image # 2, module MeasureTexture # 27: CPU_time = 21.72 secs, Wall_time = 23.49 secs
+
+Mon Oct  5 21:12:22 2026: Image # 2, module OverlayOutlines # 28: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:12:22 2026: Image # 2, module OverlayOutlines # 29: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:12:22 2026: Image # 2, module SaveImages # 30: CPU_time = 0.02 secs, Wall_time = 0.04 secs
+
+Mon Oct  5 21:12:22 2026: Image # 2, module SaveImages # 31: CPU_time = 0.03 secs, Wall_time = 0.03 secs
+
+Mon Oct  5 21:12:22 2026: Image # 2, module ConvertObjectsToImage # 32: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Mon Oct  5 21:12:22 2026: Image # 2, module ConvertObjectsToImage # 33: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+cellprofiler\modules\saveimages.py:791: UserWarning: D:\项目\cpc github v1 demo\demo\workspace\outputs\chain\seg_artifacts\cellprofiler_masks\labels\BR00000001_A02_s1--nuclei_labels.tiff is a low contrast image
+
+Mon Oct  5 21:12:22 2026: Image # 2, module SaveImages # 34: CPU_time = 0.02 secs, Wall_time = 0.04 secs
+
+cellprofiler\modules\saveimages.py:791: UserWarning: D:\项目\cpc github v1 demo\demo\workspace\outputs\chain\seg_artifacts\cellprofiler_masks\labels\BR00000001_A02_s1--cell_labels.tiff is a low contrast image
+
+Mon Oct  5 21:12:22 2026: Image # 2, module SaveImages # 35: CPU_time = 0.03 secs, Wall_time = 0.04 secs
+
+Mon Oct  5 21:12:22 2026: Image # 2, module ExportToSpreadsheet # 36: CPU_time = 0.00 secs, Wall_time = 0.00 secs
+
+Starting CellProfiler 4.2.7
+
+[segmentation_demo] running: D:\项目\CellPainting-Claw\.venv\Scripts\cellprofiler.cmd -c -r -p D:\项目\cpc github v1 demo\demo\workspace\outputs\chain\seg_artifacts\CPJUMP1_analysis_mask_export.cppipe -o D:\项目\cpc github v1 demo\demo\workspace\outputs\chain\seg_artifacts\cellprofiler_masks -i D:\项目\cpc github v1 demo --data-file D:\项目\cpc github v1 demo\demo\workspace\outputs\chain\seg_artifacts\cellprofiler_masks\load_data_for_segmentation.absolute.csv
+

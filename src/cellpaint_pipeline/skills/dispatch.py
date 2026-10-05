@@ -3,6 +3,7 @@ from __future__ import annotations
 """Public entry point that turns skill inputs into a skill run."""
 
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from cellpaint_pipeline.config import ProjectConfig
 from cellpaint_pipeline.skills.catalog import get_pipeline_skill_definition
@@ -14,6 +15,13 @@ from cellpaint_pipeline.skills.inputs import (
     assemble_skill_inputs,
 )
 from cellpaint_pipeline.skills.registry import SKILL_RUNNERS
+
+# Annotations only: importing data_access here would pull the whole data-access
+# package into every "import ...skills.dispatch".  The guard keeps type checkers
+# accurate at no runtime cost, which is why typing.get_type_hints() is not
+# supported on these entry points (nor on context/inputs, which do the same).
+if TYPE_CHECKING:
+    from cellpaint_pipeline.data_access import DataDownloadPlan, DataRequest
 
 
 def run_pipeline_skill(
