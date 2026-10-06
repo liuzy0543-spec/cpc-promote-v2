@@ -1,4 +1,4 @@
-# 代码与提示词审核任务书 · v8.1（针对 cpc github v2）
+# 代码与提示词审核任务书 · v9.1（针对 cpc github v2）
 
 > **审核对象：`D:\项目\cpc github v2`**
 >
@@ -23,7 +23,7 @@
 ### 0.3 硬规则的执行方式：数字由脚本产出，不由人手打
 
 **§3.1 与 §5.2 两张表里的每个数字**都由 `docs/measure.py` 产出，不是手工输入的，
-渲染脚本读取它的 JSON 再填进表格。生成器还会跑 7 项自检（见 §12），**任何一项不过就拒绝落盘**。
+渲染脚本读取它的 JSON 再填进表格。生成器还会跑 **8 项**自检（见 §12），**任何一项不过就拒绝落盘**。
 
 > 其余章节里的数字（技能目录项数、demo 产物数、Zenodo 权重字节数、性能耗时等）**仍然是人工写入的**，
 > 它们各自附了复现命令或在正文里标注了来源。第六轮审核曾指出前几版在此处作了过强的绝对化声明 —— 已收窄。
@@ -47,7 +47,7 @@
 | 项 | 值 |
 |---|---|
 | 本地路径 | `D:\项目\cpc github v2` |
-| git | 工作区 clean。**HEAD 与提交数请用 `git rev-parse HEAD` / `git rev-list --count HEAD` 取** —— 本文件不硬编码它们，因为它自己也在提交历史里（上游基线 152 个提交） |
+| git | **状态、HEAD 与提交数一律请用命令取** —— 不要采信任何硬编码的「clean」：`git status --porcelain` / `git rev-parse HEAD` / `git rev-list --count HEAD`** —— 本文件不硬编码它们，因为它自己也在提交历史里（上游基线 152 个提交） |
 | 基线 | 官方 `59df377` |
 | 上游仓库 | https://github.com/Seniorious123/CellPainting-Claw |
 | 官方文档站 | https://cellpainting-claw.readthedocs.io/en/latest/index.html |
@@ -139,21 +139,50 @@ python -c "import time,sys;t=time.perf_counter();import cellpaint_pipeline.skill
 ```
 
 **写就环境**：Python 3.11.5；`pycytominer`/`pandas`/`pyarrow` 已装，
-`boto3`/CellProfiler/TensorFlow 未装；独立子进程 11 次取最小值，`.pyc` 已预热。
+`tifffile` / `pycytominer 1.7.0` / `pandas` / `pyarrow` 均已安装；
+`boto3` / TensorFlow 未装。独立子进程 11 次取最小值，`.pyc` 已预热。
+
+> **CellProfiler 的装法容易被误判**（第八轮实测）：
+> `import cellprofiler` **会失败**（该环境只有 `cellprofiler-core 4.2.8.1`），
+> 但 **CLI 可用**：`D:\项目\CellPainting-Claw\.venv\Scripts\cellprofiler.cmd` 是**手写包装器**
+> （不是 pip 入口），内容为 `cd /d C:\cp-cf` + 自带 `JAVA_HOME` 与 `javabridge`，然后调 `C:\cp-cf\CellProfiler.exe`，版本 **4.2.7**。
+> 所以「CellProfiler 未装」是错的，而「装在前述 venv 里、且只能用 CLI」才是准确描述。
 
 > **已有反例**：另一轮审核在 Python 3.13.12 环境测得官方 **46.0ms / 138 模块**；
 > 本任务书先前引用的「58.0ms / 138」既非本机实测、本机也无法复现，**已改为按【主张】对待**。
 > **趋势一致（v2 比官方快约一个数量级），绝对值不可复现。**
 > 绝对值不同**不是造假，是环境差异** —— 请报告你的环境口径，再比较量级与趋势。
 
-### 3.3 环境限制（第 1 条【未知】，第 2 条【事实】）
+### 3.3 环境限制（逐条标注；两条都是【事实】）
 
-1. **【未知】CellProfiler 在非 ASCII 路径下的行为 —— 本机证据与早期结论冲突。**
+1. **【事实】**`Test for access to directory failed` 的真实出处与语义。
+   该字符串确实存在，位于 `cellprofiler_core/image/abstract_image/file/_file_image.py:160`，
+   但它的代码是**纯 Python**：
+
+```python
+elif os.path.exists(path):
+    return False
+else:
+    raise IOError("Test for access to directory failed. Directory: %s" % path)
+```
+
+   语义是「**该路径不存在或访问不到**」，**与 JVM 毫无关系**。
+   早期任务书写的「CellProfiler 的 JVM 读不了非 ASCII 路径」——**错误串抄对了，归因和语义都错了**。
+   非 ASCII 只是**可能的诱因之一**（文件系统编码不支持时 `os.path.exists()` 返回 False），不是原因本身。
+   本机 `os.path.exists` 对中文路径完全正常（filesystem encoding = utf-8），
+   且 demo 日志显示 CellProfiler 4.2.7 在中文路径下**跑通过**。
+   该串在被审代码与产物里 **0 命中**，只作为引文存在于任务书正文。
    早期版本断言「JVM 读不了非 ASCII 路径：报 `Test for access to directory failed`，但仍以 returncode=0 结束」。
    第六轮审核实测：该错误串在本树 **0 命中**，`pipeline_exception` 也 **0 命中**；
    而 `demo/workspace/outputs/logs/segmentation/*.log` 显示 CellProfiler 4.2.7 在含中文的 D:\项目\…（示意）路径下
    **成功执行到 ExportToSpreadsheet** 并产出了 `nuclei_labels.tiff` / `cell_labels.tiff`。
-   **因此本条按 §9 记为「无法判定」**，请在你自己的环境里验证，不要采信早期结论。复现命令：
+复现命令（在装好 CellProfiler 的 venv 里跑）：
+
+```bash
+grep -rn "Test for access to directory failed" "D:/项目/CellPainting-Claw/.venv/Lib/site-packages/cellprofiler_core"
+```
+
+证据缺失检查（期望 0 / 0）：
 
 ```bash
 grep -rl "Test for access to directory failed" "D:\项目\cpc github v1 demo\demo" | wc -l
@@ -291,7 +320,7 @@ _lazy(...)     ->  ...       # cli 包延迟导入绑定
 |---|---|---|
 | **本任务书** | `cpc github v2\docs\review_prompt.md` | 本文件 |
 | **同目录的上一版** | `D:\项目\CPC-v1-审查提示词-v6.1.md` | 针对同一个 v2 目录 |
-| **对照版（另一棵树）** | `D:\项目\CPC-v1-审查提示词-v8.md` | 针对 v1 目录 |
+| **对照版（另一棵树）** | `D:\项目\CPC-v1-审查提示词-v9.md` | 针对 v1 目录 |
 | **第五版（已被本版取代）** | `D:\项目\CPC-v1-审查提示词-v5.md` / `-v5.1.md` | 已知：命令与数字不同源、§3.3 标【事实】却零命令、归属错误、交叉引用悬空 |
 | 第四版 | `D:\项目\CPC-v1-审查提示词-v4.md` / `-v4.1.md` | 已知结构损坏 |
 | 第三版 | `D:\项目\CPC-v1-审查提示词-v3.md` / `-v3.1.md` | 已知 3 处 P0 错误 |
@@ -330,6 +359,10 @@ _lazy(...)     ->  ...       # cli 包延迟导入绑定
 | v5.1 | §6 把两个 ## 7 同时挂在 v4 与 v4.1 名下 | 实测 v4 只有 **1** 个，v4.1 才有 2 个 | 归属错误 |
 | **v5** | §3.3 写见 §7.2 的 D2 | v5 全文 `D2` 只出现这一次 | **交叉引用悬空** |
 | **v5** | §3.4 引用第二轮代码审核报告 | 该文件本机不存在 | **出处不可核验** |
+| **v8** | §3.2 写「CellProfiler 未装」 | 已装，只是走 CLI 包装器（见 §3.2 注） | 事实错误 |
+| **v8** | §3.3 写「JVM 读不了非 ASCII 路径」 | 该串出自纯 Python 的 `os.path.exists()` 分支 | 归因 + 语义错 |
+| **v8** | D2 的证据 `pipeline_exception` | 在被审代码、产物、测试里 **0 命中** | 结论对、证据错 |
+| **v8** | §12 检查项数在同一文档里出现 7 / 8 / 9 | §0.3 说 7、正文说 8、表格 9 行 | 自相矛盾 |
 
 ### 6.3 首版提示词的真实一致性缺陷
 
@@ -388,7 +421,7 @@ python docs/fnclass.py D:\\项目\\base .
 
 | # | 问题 | 说明 |
 |---|---|---|
-| D2 | **CellProfiler 失败被静默吞掉** | 脚本 `returncode=0`、技能报 `ok:true`，只有日志有 `pipeline_exception`。**两版均未修** |
+| D2 | **CellProfiler 失败被静默吞掉**（**现象已实测复现；但早期引用的证据是假的**） | 第八轮活体实测：`LoadData` 指向不存在的 CSV → **退出码 0、0 个产物**；输出目录（中文）不存在 → **退出码 0**；**对照**：流水线文件本身不存在 → **退出码 1**。即 `prepare_run` 阶段的失败被吞掉。**两版均未修** |
 | D4 | 源码总量 +18%、>400 行文件数 11 -> 11 | `segmentation_native.py` 907 行、`orchestration.py` 805 行仍很大 |
 | N1 | 227 个动态分发调用点 | 官方 90。为保 `patch()` 接缝而保留，**份数归 1 不等于成本归零** |
 | N2 | `outputs.py` 的 SSOT 只覆盖 6/37 个技能 | 其余 31 个仍是手写双份；机制已就绪，可增量迁移 |
@@ -419,7 +452,8 @@ v3.1 在文档最顶部写了「**全部已知问题已修复**」，与它自�
 
 | 情况 | 你要写的 |
 |---|---|
-| 缺 CellProfiler / DeepProfiler / 权重 | 「阶段 X 无法判定：缺少 …」 |
+| 缺 DeepProfiler / 权重 | 「阶段 X 无法判定：缺少 …」 |
+| 有 CLI 但 `import cellprofiler` 失败 | 用 CLI；**不要因此判为「缺 CellProfiler」**（见 §3.2 注） |
 | 缺可选依赖导致无法 import | 「指标 X 无法判定：缺少 …」 |
 | 基线 commit 无对应产物 | 「无法基线对拍：`59df377` 无产物」 |
 | 网络不可达 | 「阶段 X 无法判定：网络不可达」 |
@@ -463,7 +497,9 @@ v3.1 在文档最顶部写了「**全部已知问题已修复**」，与它自�
 
 ## 12. 本任务书的生成期自检（生成器强制执行）
 
-本文件由生成器渲染，**8 项检查全部通过才允许落盘**；S7b 与 S8 在写盘后实跑，失败则回滚删除：
+本文件由生成器渲染，**8 项检查全部通过才允许落盘**。
+
+其中 S1–S6 在落盘前跑；**S7b 在写盘后实跑，失败则回滚删除**；**S8 尚未实现**（见下表）。
 
 | # | 检查 | 不过的后果 |
 |---|---|---|
@@ -475,7 +511,10 @@ v3.1 在文档最顶部写了「**全部已知问题已修复**」，与它自�
 | S6 | **§3.1 与 §5.2 表格里的每个数字都能在 `measure.py` 的输出里找到** | 拒绝生成 |
 | **S7a** | **每个围栏代码块都能通过 `bash -n` 语法检查**（用 Git Bash，不用 WSL bash） | 拒绝生成 |
 | **S7b** | **写盘后实跑关键命令，断言语义正确**：退出码 0、**且 stderr 为空**、且输出符合该命令声明的期望形态（非空 / 恰为空 / 含指定串） | **回滚删除已写文件** |
-| **S8** | **命令产出校验**：对每个【事实】块实跑其命令，断言输出**包含该块声称的数字或路径** | 拒绝生成 |
+
+**S8 尚未实现。** 第七轮审核建议增加「命令产出校验」（对每个【事实】块实跑其命令，断言输出包含该块声称的数字或路径），
+本版把它写进了检查清单却**没有写进生成器** —— 这正是「规则自己不执行」那一类错误，
+第八轮已指出。**列出它是为了让这个缺口可见，不是声称它已生效。**
 
 > **S7b 的判据被第七轮审核指出过自相矛盾**：本节末尾那条 S1 复核命令**成功时输出恰好为空**，
 > 「输出不得为空」会把成功判成失败。现在改为按块声明期望形态。
