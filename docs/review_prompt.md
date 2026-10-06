@@ -1,4 +1,4 @@
-# 代码与提示词审核任务书 · v6.1（针对 cpc github v2）
+# 代码与提示词审核任务书 · v7.1（针对 cpc github v2）
 
 > **审核对象：`D:\项目\cpc github v2`**
 >
@@ -22,8 +22,11 @@
 
 ### 0.3 硬规则的执行方式：数字由脚本产出，不由人手打
 
-本文件**没有一个数字是手工输入的**。全部来自 `docs/measure.py` 的输出，
-渲染脚本读取它的 JSON 再填进表格。生成器还会跑 6 项自检（见 §12），**任何一项不过就拒绝落盘**。
+**§3.1 与 §5.2 两张表里的每个数字**都由 `docs/measure.py` 产出，不是手工输入的，
+渲染脚本读取它的 JSON 再填进表格。生成器还会跑 7 项自检（见 §12），**任何一项不过就拒绝落盘**。
+
+> 其余章节里的数字（技能目录项数、demo 产物数、Zenodo 权重字节数、性能耗时等）**仍然是人工写入的**，
+> 它们各自附了复现命令或在正文里标注了来源。第六轮审核曾指出前几版在此处作了过强的绝对化声明 —— 已收窄。
 
 这不是设计洁癖，是五轮迭代的产物：
 
@@ -62,9 +65,8 @@ cd "D:\项目\cpc github v2" && git status --porcelain | cut -c1-2 | sort | uniq
 ### 1.2 如何取出官方基线树
 
 ```bash
-mkdir -p ../base && cd ../base
-git -C "D:\项目\cpc github v2" worktree add --no-checkout . 59df377
-git checkout 59df377 -- src/cellpaint_pipeline
+git -C "D:\项目\cpc github v2" worktree add --no-checkout "D:\\项目\\base" 59df377
+git -C "D:\\项目\\base" checkout 59df377 -- src/cellpaint_pipeline
 ```
 
 ---
@@ -96,17 +98,17 @@ JUMP-CP https://www.nature.com/articles/s41592-024-02241-6
 
 | 指标 | 官方 `59df377` | `cpc github v1` | **本目录** |
 |---|---|---|---|
-| 源文件数 | `**35**` | `**65**` | `**65**` |
-| 源码总行 | `**13125**` | `**15619**` | `**15477**` |
-| 函数总数 | `**348**` | `**477**` | `**470**` |
+| 源文件数 | **35** | **65** | **65** |
+| 源码总行 | **13125** | **15619** | **15477** |
+| 函数总数 | **348** | **477** | **470** |
 | 平均函数行 | 37.7 | 32.7 | 32.9 |
 | 最长函数（行） | `**855**`（main） | `**201**`（run_end_to_end_pipeline） | `**201**`（run_end_to_end_pipeline） |
 | 最大单文件（行） | 1646（skills.py） | 907（segmentation_native.py） | 907（segmentation_native.py） |
-| >400 行文件数 | `**11**` | `**11**` | `**11**` |
+| >400 行文件数 | **11** | **11** | **11** |
 | If 密度（每千行） | 38.6 | 29.8 | 30.4 |
-| 分发垫片定义处 | `**1**` | `**13**` | `**3**` |
-| 分发垫片调用点 | `**90**` | `**227**` | `**227**` |
-| run_pipeline_skill 参数 | `**36**` | `**37**` | `**4**` |
+| 分发垫片定义处 | **1** | **13** | **3** |
+| 分发垫片调用点 | **90** | **227** | **227** |
+| run_pipeline_skill 参数 | **36** | **37** | **4** |
 
 **复现命令就是本目录的 `docs/measure.py`**（上表每个数字都由它打印）：
 
@@ -135,22 +137,28 @@ python -c "import time,sys;t=time.perf_counter();import cellpaint_pipeline.skill
 **写就环境**：Python 3.11.5；`pycytominer`/`pandas`/`pyarrow` 已装，
 `boto3`/CellProfiler/TensorFlow 未装；独立子进程 11 次取最小值，`.pyc` 已预热。
 
-> **已有反例**：一轮独立审核在缺 `tifffile` 的 Python 3.13.12 环境测得官方 **58.0ms / 138 模块**。
+> **已有反例**：另一轮审核在 Python 3.13.12 环境测得官方 **46.0ms / 138 模块**；
+> 本任务书先前引用的「58.0ms / 138」既非本机实测、本机也无法复现，**已改为按【主张】对待**。
 > **趋势一致（v2 比官方快约一个数量级），绝对值不可复现。**
 > 绝对值不同**不是造假，是环境差异** —— 请报告你的环境口径，再比较量级与趋势。
 
-### 3.3 环境限制 【事实】
+### 3.3 环境限制（第 1 条【未知】，第 2 条【事实】）
 
-1. **CellProfiler 的 JVM 读不了非 ASCII 路径**。复现证据（在 `cpc github v1 demo` 里跑）：
+1. **【未知】CellProfiler 在非 ASCII 路径下的行为 —— 本机证据与早期结论冲突。**
+   早期版本断言「JVM 读不了非 ASCII 路径：报 `Test for access to directory failed`，但仍以 returncode=0 结束」。
+   第六轮审核实测：该错误串在本树 **0 命中**，`pipeline_exception` 也 **0 命中**；
+   而 `demo/workspace/outputs/logs/segmentation/*.log` 显示 CellProfiler 4.2.7 在含中文的 D:\项目\…（示意）路径下
+   **成功执行到 ExportToSpreadsheet** 并产出了 `nuclei_labels.tiff` / `cell_labels.tiff`。
+   **因此本条按 §9 记为「无法判定」**，请在你自己的环境里验证，不要采信早期结论。复现命令：
 
 ```bash
-grep -rl "Test for access to directory failed" "D:\项目\cpc github v1 demo\demo" | head -3
+grep -rl "Test for access to directory failed" "D:\项目\cpc github v1 demo\demo" | wc -l
+grep -rl "pipeline_exception" "D:\项目\cpc github v1 demo\demo" | wc -l
 ```
 
-   现象是脚本写 `OSError: Test for access to directory failed` **但仍以 `returncode=0` 结束**，
-   技能报 `ok:true` —— 只有日志里有痕迹。要跑分割类技能必须先把仓库放到纯 ASCII 路径。见 §7.2 的 D2。
 2. `dp-run-deep-feature-model` 需联网取 Zenodo 权重（19,236,600 字节）。
-   复现：`curl -sI https://zenodo.org/records/7114558 | head -1`（需网络；不可达则按 §9 标注）。
+   `curl -sI https://zenodo.org/records/7114558 | head -1` **只能验连通性，验不了字节数**；
+   要核实大小请下载后 `wc -c`。
 
 ### 3.4 pytest 【事实】
 
@@ -315,7 +323,7 @@ _lazy(...)     ->  ...       # cli 包延迟导入绑定
 **【事实】** 首版 §9 的函数分类计数**不闭合**。复现命令：
 
 ```bash
-grep -n "301 逐字节相同|23 实质改写|348 个原函数|98 新增" "D:\项目\CPC-v1-审查提示词.md"
+grep -nE "301 逐字节相同|23 实质改写|348 个原函数|98 新增" "D:\项目\CPC-v1-审查提示词.md"
 ```
 
 它会显示首版同时写着「348 个原函数」「301 逐字节相同」「23 实质改写」「98 新增」。算术：
@@ -325,9 +333,15 @@ grep -n "301 逐字节相同|23 实质改写|348 个原函数|98 新增" "D:\项
 331 + 98          = 429  != 475
 ```
 
-**【事实】331 这个数已被三轮独立复现**（第五轮用按函数名建键的脚本精确复现）。
-复现口径：按函数名匹配 + `ast.walk` 全量 + 归一化 `_native(`/`_impl(`，官方侧去重后 **331** 个函数。
-据此，首版把 **331/429 口径的分类计数**与 **348/475 口径的函数总数**写进了同一条。
+**【事实】** 复现命令（脚本随本目录交付）：
+
+```bash
+python docs/fnclass.py D:\\项目\\base .
+```
+
+本机实测输出：基线侧 **331** 个函数名；目标侧 **431**（v1）/ **432**（v2）；
+相同 **301**（v1）/ **299**（v2）、改写 **30** / **32**、删除 **0** / **0**、新增 **100** / **101**，且 `相同+改写+删除 = 331` 闭合。
+据此，首版把**按名去重的 331**口径与**含嵌套重名的 348**口径写进了同一条。
 
 **【主张】** 首版分类里的**逐字节相同 = 297** 是 **297 = 331 - 11 - 23** 的**倒推**，**不是实测**；
 且 11 与 23 直接来自首版自己的声称。另一轮实测为 **296**（重构侧总数 **431**、新增 **100**）。
@@ -344,8 +358,8 @@ grep -n "301 逐字节相同|23 实质改写|348 个原函数|98 新增" "D:\项
 
 | # | 原问题 | 修法 | 验证命令 / 期望 |
 |---|---|---|---|
-| F1 | 9 份重复 `def _impl` | 收敛为 `cli/helpers.py:147` | `grep -rc ^def _impl src` -> 1 |
-| F2 | 3 份重复 `def _native` | 收敛为 `skills/finalize.py:109` | `python docs/measure.py .` 看 `dispatch_definition_total` -> 3（**不要用 grep**） |
+| F1 | 9 份重复 `def _impl` | 收敛为 `cli/helpers.py:147` | `python docs/measure.py .` 看 `dispatch_definitions._impl` -> **1** |
+| F2 | 3 份重复 `def _native` | 收敛为 `skills/finalize.py:109` | `python docs/measure.py .` 看 `dispatch_definitions._native` -> **1**（合计为 3 不具区分性：`_impl=2/_native=0/_lazy=1` 也是 3） |
 | F3 | fail-fast 只做一半 | 必填缺值也 raise | 缺键 -> `ValueError: required output(s) were not produced: ...` |
 | F4 | `dispatch.py` 漏 `TYPE_CHECKING` | 已补，三处一致 | `get_type_hints()` **仍会失败，这是正常的** |
 | F5 | `skills` 导入比官方慢 | PEP 562 懒加载 | 见 §3.2 的复现命令 |
@@ -433,7 +447,7 @@ v3.1 在文档最顶部写了「**全部已知问题已修复**」，与它自�
 
 ## 12. 本任务书的生成期自检（生成器强制执行）
 
-本文件由生成器渲染，**6 项检查全部通过才允许落盘**：
+本文件由生成器渲染，**7 项检查全部通过才允许落盘**；S7b 在写盘后实跑，失败则回滚删除：
 
 | # | 检查 | 不过的后果 |
 |---|---|---|
@@ -442,12 +456,18 @@ v3.1 在文档最顶部写了「**全部已知问题已修复**」，与它自�
 | S3 | 代码围栏成对 | 拒绝生成 |
 | S4 | 路径表里每条路径真实存在 | 拒绝生成 |
 | S5 | **每个标【事实】的小节，其正文内必须有代码块** | 拒绝生成 |
-| S6 | **表格里的每个数字都能在 `measure.py` 的输出里找到** | 拒绝生成 |
+| S6 | **§3.1 与 §5.2 表格里的每个数字都能在 `measure.py` 的输出里找到** | 拒绝生成 |
+| **S7a** | **每个围栏代码块都能通过 `bash -n` 语法检查**（用 Git Bash，不用 WSL bash） | 拒绝生成 |
+| **S7b** | **写盘后实跑本任务书让审查者跑的关键命令，输出不得为空** | **回滚删除已写文件** |
+
+> **S7 是第六轮审核建议加的**：那一轮发现三条命令根本跑不起来 —— §12 的 awk 报 `unexpected EOF`、
+> §6.3 的 grep 返回 0 条、§1.2 的 `git worktree add .` 报 `fatal: '.' already exists`。
+> S1–S6 只管「有没有命令」和「数字能否溯源」，**不管命令跑不跑得起来**。
 
 你可以在本目录自行复核 S1：
 
 ```bash
-awk "/^[`]{3}/{f=!f;next} !f && /^#{2,3} /{print}" docs/review_prompt.md \
+awk '/^```/{f=!f;next} !f && /^#{2,3} /{print}' docs/review_prompt.md \
   | sed "s/^\(#\{2,3\} [0-9][0-9.]*\).*/\1/" | sort | uniq -d
 ```
 
